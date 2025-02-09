@@ -7,9 +7,13 @@ This project is aims to explore, clean, and analyze sales data by using SQL. IT 
 **Objectives**
 
 **1. Set up sales_analysis_project database**: Create and populate a sales analysis project database with the provided sales data.
+
 **2.Data Cleaning:** Identify and remove any records with missing or null values.
+
 **3. Exploratory Data Analysis (EDA):** Perfor basic exploratory data analysis to understand the dataset.
+
 **4. SQL Queries:** Utilizing SQL queries to derive meaningful insights from the sales data.
+
 **5.Data Visualization:** Using Tableau to create interactive and informative visualizations that effectively communicate the insights.
 
 **Project Structure**
@@ -22,32 +26,32 @@ This project is aims to explore, clean, and analyze sales data by using SQL. IT 
 create databases sales_analysis_project;
 
 CREATE TABLE Sales_Data (
-     id INT PRIMARY KEY,
-    OrderDetailID INT,
-    OrderID INT,
-    OrderDate DATETIME,
-    DueDate DATETIME,
-    ShipDate DATETIME,
-    StatusID INT,
-    Status VARCHAR(255),
-    OnlineOrderFlag INT,
-    `CustomerID` VARCHAR(255),
-    `SalesPersonID` INT,
-    `TerritoryID` INT,
-    `Territory` VARCHAR(255),
-    `TerritoryGroup` VARCHAR(255),
-    `ShipMethodID` VARCHAR(255),
-    `ShipMethod` VARCHAR(255),
-    `ProductID` VARCHAR(255),
-    `Product` VARCHAR(255),
-    `ProductSubCategory` VARCHAR(255),
-    `ProductCategory` VARCHAR(255),
-    `OrderQty` INT,
-    `UnitPrice` DECIMAL(10, 2),
-    `LineTotal` DECIMAL(10, 2),
-    `TaxAmt` DECIMAL(10, 2),
-    `Freight` DECIMAL(10, 2),
-    `TotalDue` DECIMAL(10, 2)
+	id INT PRIMARY KEY,
+    	OrderDetailID INT,
+    	OrderID INT,
+    	OrderDate DATETIME,
+    	DueDate DATETIME,
+    	ShipDate DATETIME,
+    	StatusID INT,
+    	Status VARCHAR(255),
+    	OnlineOrderFlag INT,
+    	CustomerID VARCHAR(255),
+    	SalesPersonID INT,
+    	TerritoryID` INT,
+    	Territory` VARCHAR(255),
+    	TerritoryGroup` VARCHAR(255),
+    	ShipMethodID` VARCHAR(255),
+    	ShipMethod` VARCHAR(255),
+    	ProductID` VARCHAR(255),
+    	Product` VARCHAR(255),
+    	ProductSubCategory` VARCHAR(255),
+    	ProductCategory` VARCHAR(255),
+    	OrderQty` INT,
+    	UnitPrice` DECIMAL(10, 2),
+    	LineTotal` DECIMAL(10, 2),
+    	TaxAmt` DECIMAL(10, 2),
+    	Freight` DECIMAL(10, 2),
+    	TotalDue` DECIMAL(10, 2)
 );
 
 **2. Data Exploration & Cleaning**
