@@ -23,6 +23,8 @@ This project is aims to explore, clean, and analyze sales data by using SQL. IT 
 **Database Creation**: The project starts by creating a database named sales_project_analysis.
 **Table Creation:** A table named Sales_data is created to store the sales data. The table structure includes columns for SalesPersonID,	TerritoryID,	Territory,	TerritoryGroup,	ShipMethodID,	ShipMethod,	ProductID,	Product,	ProductSubCategory,	ProductCategory,	OrderQty,	UnitPrice,	LineTotal,	TaxAmt,	Freight and	TotalDue.
 
+```sql
+
 create databases sales_analysis_project;
 
 CREATE TABLE Sales_Data (
@@ -54,6 +56,7 @@ CREATE TABLE Sales_Data (
     	TotalDue` DECIMAL(10, 2)
 );
 
+```
 **2. Data Exploration & Cleaning**
 
 **View All Column Names and Data** : To see all the column names and data in the dataset
