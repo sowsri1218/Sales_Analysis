@@ -41,21 +41,21 @@ CREATE TABLE Sales_Data (
     	OnlineOrderFlag INT,
     	CustomerID VARCHAR(255),
     	SalesPersonID INT,
-    	TerritoryID` INT,
-    	Territory` VARCHAR(255),
-    	TerritoryGroup` VARCHAR(255),
-    	ShipMethodID` VARCHAR(255),
-    	ShipMethod` VARCHAR(255),
-    	ProductID` VARCHAR(255),
-    	Product` VARCHAR(255),
-    	ProductSubCategory` VARCHAR(255),
-    	ProductCategory` VARCHAR(255),
-    	OrderQty` INT,
-    	UnitPrice` DECIMAL(10, 2),
-    	LineTotal` DECIMAL(10, 2),
-    	TaxAmt` DECIMAL(10, 2),
-    	Freight` DECIMAL(10, 2),
-    	TotalDue` DECIMAL(10, 2)
+    	TerritoryID INT,
+    	Territory VARCHAR(255),
+    	TerritoryGroup VARCHAR(255),
+    	ShipMethodID VARCHAR(255),
+    	ShipMethod VARCHAR(255),
+    	ProductID VARCHAR(255),
+    	Product VARCHAR(255),
+    	ProductSubCategory VARCHAR(255),
+    	ProductCategory VARCHAR(255),
+    	OrderQty INT,
+    	UnitPrice DECIMAL(10, 2),
+    	LineTotal DECIMAL(10, 2),
+    	TaxAmt DECIMAL(10, 2),
+    	Freight DECIMAL(10, 2),
+    	TotalDue DECIMAL(10, 2)
 );
 
 ```
@@ -125,35 +125,32 @@ SELECT DISTINCT product FROM sales_data;
 
 **4. SQL Queries:**
 
+**Total sales Per year**
 ```sql
-
------Total sales Per year
-
 SELECT extract(year from OrderDate) AS year,
 count(orderqty) AS Totalsales
 FROM sales_data
 GROUP BY year
 ORDER BY year;
-
-
------Total Sales Per Month
-
+```
+**Total Sales Per Month**
+```sql
 SELECT  TO_CHAR(OrderDate, 'Month') AS Month,
 sum(orderqty) AS TotalSales
 FROM sales_data 
 GROUP BY Month
 ORDER BY totalsales desc;
-
---Total Revenue per month
-
+```
+**Total Revenue per month**
+```sql
 SELECT  TO_CHAR(OrderDate, 'Month') AS Month,
 SUM(totaldue) AS Revenue
 FROM sales_data 
 GROUP BY Month
 ORDER BY revenue desc;
-
--- Total sales by weekday and weekend
-
+```
+**Total sales by weekday and weekend**
+```sql
 SELECT 
     CASE WHEN EXTRACT(DOW FROM OrderDate) IN (1, 2, 3, 4, 5) THEN 'Weekday'
     ELSE 'Weekend' END AS DayType,
@@ -161,23 +158,23 @@ SUM(orderqty) AS TotalSales
 FROM sales_data
 GROUP BY DayType
 ORDER BY totalsales desc;
+```
+**Total sales for each month and best selling month in each year**
 
--- Total sales for each month and best selling month in each year
-
+```sql
 select 
 	year,
 	month,
 	totalsales 
 from (
-select 
-		extract(year from orderdate)as year, 
-		TO_CHAR(orderdate, 'month')as month,
-		SUM(orderqty) AS TotalSales,
-		rank() over (partition by extract(year from orderdate)
-		order by SUM(orderqty) desc)as rank 
+select
+	extract(year from orderdate)as year, 
+	TO_CHAR(orderdate, 'month')as month,
+	SUM(orderqty) AS TotalSales,
+	rank() over (partition by extract(year from orderdate)
+	order by SUM(orderqty) desc)as rank 
 from sales_data 
 group by year,month 
 ) 
 as t1 where rank = 1;
-
 ```
