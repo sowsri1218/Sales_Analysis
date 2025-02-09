@@ -82,11 +82,11 @@ WHERE
     orderdetailid IS NULL OR orderid IS NULL OR orderdate IS NULL OR 
     duedate IS NULL OR shipdate IS NULL OR statusid IS NULL OR status IS NULL OR
     onlineorderflag IS NULL OR customerid IS NULL OR salespersonid IS NULL OR
-	  territoryid IS NULL OR territory IS NULL OR territorygroup IS NULL OR 
+    territoryid IS NULL OR territory IS NULL OR territorygroup IS NULL OR 
     shipmethodid IS NULL OR shipmethod IS NULL OR productid IS NULL OR 
     product IS NULL OR ProductSubCategory IS NULL OR ProductCategory IS NULL OR	
-	  OrderQty IS NULL OR UnitPrice IS NULL OR LineTotal IS NULL OR	TaxAmt IS NULL OR	
-	  Freight IS NULL OR	TotalDue IS NULL;
+    OrderQty IS NULL OR UnitPrice IS NULL OR LineTotal IS NULL OR TaxAmt IS NULL OR	
+    Freight IS NULL OR	TotalDue IS NULL;
 
 
 DELETE FROM sales_data
@@ -94,10 +94,10 @@ WHERE
     orderdetailid IS NULL OR orderid IS NULL OR orderdate IS NULL OR 
     duedate IS NULL OR shipdate IS NULL OR statusid IS NULL OR status IS NULL OR
     onlineorderflag IS NULL OR customerid IS NULL OR salespersonid IS NULL OR
-	  territoryid IS NULL OR territory IS NULL OR territorygroup IS NULL OR 
+    territoryid IS NULL OR territory IS NULL OR territorygroup IS NULL OR 
     shipmethodid IS NULL OR shipmethod IS NULL OR productid IS NULL OR 
     product IS NULL OR ProductSubCategory IS NULL OR ProductCategory IS NULL OR	
-	  OrderQty IS NULL OR UnitPrice IS NULL OR LineTotal IS NULL OR	TaxAmt IS NULL OR	
-	  Freight IS NULL OR	TotalDue IS NULL;
+    OrderQty IS NULL OR UnitPrice IS NULL OR LineTotal IS NULL OR TaxAmt IS NULL OR	
+    Freight IS NULL OR	TotalDue IS NULL;
 
 ```
