@@ -139,12 +139,22 @@ GROUP BY
     year
 ORDER BY year;
 ```
-**Total Sales Per Month**
+**Total count of orders by status**
 ```sql
 SELECT status, COUNT(*) 
 FROM sales_data 
 GROUP BY status
 order by status;
+```
+**Total Sales Per Month**
+```sql
+SELECT  TO_CHAR(OrderDate, 'Month') AS Month,
+sum(orderqty) AS TotalSales
+FROM sales_data 
+WHERE 
+    TRIM(LOWER(status)) = 'shipped'
+GROUP BY Month
+ORDER BY totalsales desc;
 ```
 **Total Revenue per month**
 ```sql
@@ -156,7 +166,6 @@ WHERE
     TRIM(LOWER(status)) = 'shipped'
 GROUP BY Month
 ORDER BY revenue desc;
-
 ```
 **Total sales by weekday and weekend**
 ```sql
