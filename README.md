@@ -128,27 +128,35 @@ SELECT DISTINCT product FROM sales_data;
 
 **Total sales Per year**
 ```sql
-SELECT extract(year from OrderDate) AS year,
-count(orderqty) AS Totalsales
-FROM sales_data
-GROUP BY year
+SELECT 
+    EXTRACT(YEAR FROM OrderDate) AS year,
+    sum(orderqty) AS TotalSales
+FROM 
+    sales_data
+WHERE 
+    TRIM(LOWER(status)) = 'shipped'
+GROUP BY 
+    year
 ORDER BY year;
 ```
 **Total Sales Per Month**
 ```sql
-SELECT  TO_CHAR(OrderDate, 'Month') AS Month,
-sum(orderqty) AS TotalSales
+SELECT status, COUNT(*) 
 FROM sales_data 
-GROUP BY Month
-ORDER BY totalsales desc;
+GROUP BY status
+order by status;
 ```
 **Total Revenue per month**
 ```sql
 SELECT  TO_CHAR(OrderDate, 'Month') AS Month,
-SUM(totaldue) AS Revenue
+SUM(totaldue) AS Revenue,
+sum(orderqty) AS TotalSales
 FROM sales_data 
+WHERE 
+    TRIM(LOWER(status)) = 'shipped'
 GROUP BY Month
 ORDER BY revenue desc;
+
 ```
 **Total sales by weekday and weekend**
 ```sql
@@ -157,6 +165,8 @@ SELECT
     ELSE 'Weekend' END AS DayType,
 SUM(orderqty) AS TotalSales
 FROM sales_data
+WHERE 
+    TRIM(LOWER(status)) = 'shipped'
 GROUP BY DayType
 ORDER BY totalsales desc;
 ```
@@ -167,13 +177,15 @@ select
 	month,
 	totalsales 
 from (
-select
-	extract(year from orderdate)as year, 
-	TO_CHAR(orderdate, 'month')as month,
-	SUM(orderqty) AS TotalSales,
-	rank() over (partition by extract(year from orderdate)
-	order by SUM(orderqty) desc)as rank 
+select 
+		extract(year from orderdate)as year, 
+		TO_CHAR(orderdate, 'month')as month,
+		SUM(orderqty) AS TotalSales,
+		rank() over (partition by extract(year from orderdate)
+		order by SUM(orderqty) desc)as rank 
 from sales_data 
+WHERE 
+    TRIM(LOWER(status)) = 'shipped'
 group by year,month 
 ) 
 as t1 where rank = 1;
@@ -183,8 +195,10 @@ as t1 where rank = 1;
 select productcategory,
 sum(orderqty) as totalsales
 from sales_data
+WHERE 
+    TRIM(LOWER(status)) = 'shipped'
 group by productcategory
-order by total_orders desc;
+order by totalsales desc;
 ```
 **Product Flow Analysis by Category and Status with Total Orders**
 ```sql
@@ -213,30 +227,83 @@ WHERE
 GROUP BY
     ProductCategory
 order by revenue desc;
+
 ```
 **Tops 5 Products by revenue**
 ```sql
-select product, SUM(totaldue) AS Revenue
+select product, productcategory, SUM(totaldue) AS Revenue
 from  sales_data
 WHERE
     Status IN ('Shipped')
 GROUP BY
-    Product
+    Product, productcategory
 order by Revenue desc limit 5;
 ```
 **Top 5 orders and their revenue by Product Sub-Category**
 ```sql
 select productsubcategory, sum(totaldue) as revenue,
-count(*) as total_orders
+sum(orderqty) as totalsales
 from sales_data
+WHERE 
+    TRIM(LOWER(status)) = 'shipped'
 group by productsubcategory 
-order by revenue desc limit 5;
+order by revenue desc limit 5; 
 ```
 **Top 5 Customers based on the highest total sales**
 ```sql
 select customerid,territory, sum(totaldue) as revenue,
-count(*) as total_orders
+sum(orderqty) as totalsales
 from sales_data
+WHERE 
+    TRIM(LOWER(status)) = 'shipped'
 group by customerid, territory
 order by revenue desc limit 5;
+```
+**Find the number of unique customers who purchased items from each category**
+```sql
+select productcategory,
+count(distinct customerid) as unique_customers
+from sales_data 
+WHERE 
+    TRIM(LOWER(status)) = 'shipped'
+group by productcategory
+order by unique_customers desc;
+```
+**Sales by region**
+```sql
+select territory, sum(orderqty) as totalsales 
+from sales_data
+WHERE 
+    TRIM(LOWER(status)) = 'shipped'
+group by territory
+order by totalsales desc;
+```
+**The freight charges for each category**
+```sql
+SELECT
+    productcategory,
+    round(avg(Freight),2) AS average_freight_charges,
+	sum(Freight) as total_freight_charges
+FROM
+    sales_data
+WHERE 
+    TRIM(LOWER(status)) = 'shipped'
+GROUP BY
+    productcategory
+ORDER BY
+   average_freight_charges desc ;
+```
+**Top 5 Salespersons-Product Category Pairs by Total Sales and Revenue**
+```sql
+SELECT
+    salespersonid,productcategory,
+    SUM(totaldue) AS revenue
+FROM
+    sales_data
+WHERE 
+    TRIM(LOWER(status)) = 'shipped'
+GROUP BY
+    salespersonid,productcategory
+ORDER BY
+   revenue DESC limit 5;
 ```
