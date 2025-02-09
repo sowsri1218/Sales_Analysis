@@ -21,6 +21,7 @@ This project is aims to explore, clean, and analyze sales data by using SQL. IT 
 **1. Database Setup**
 
 **Database Creation**: The project starts by creating a database named sales_project_analysis.
+
 **Table Creation:** A table named Sales_data is created to store the sales data. The table structure includes columns for SalesPersonID,	TerritoryID,	Territory,	TerritoryGroup,	ShipMethodID,	ShipMethod,	ProductID,	Product,	ProductSubCategory,	ProductCategory,	OrderQty,	UnitPrice,	LineTotal,	TaxAmt,	Freight and	TotalDue.
 
 ```sql
@@ -60,10 +61,16 @@ CREATE TABLE Sales_Data (
 **2. Data Exploration & Cleaning**
 
 **View All Column Names and Data** : To see all the column names and data in the dataset
+
 **Record Count**: Determine the total number of records in the dataset.
+
 **Orders Count:** Find out how many unique orders are in the dataset.
+
 **ProductCategory Count:** Identify all unique product categories in the dataset.
+
 **Null Value Check:** Check for any null values in the dataset and if present delete records with missing data.
+
+```sql
 
 SELECT * FROM sales_data;
 SELECT COUNT(*) FROM sales_data;
@@ -81,6 +88,7 @@ WHERE
 	  OrderQty IS NULL OR UnitPrice IS NULL OR LineTotal IS NULL OR	TaxAmt IS NULL OR	
 	  Freight IS NULL OR	TotalDue IS NULL;
 
+
 DELETE FROM sales_data
 WHERE 
     orderdetailid IS NULL OR orderid IS NULL OR orderdate IS NULL OR 
@@ -91,3 +99,5 @@ WHERE
     product IS NULL OR ProductSubCategory IS NULL OR ProductCategory IS NULL OR	
 	  OrderQty IS NULL OR UnitPrice IS NULL OR LineTotal IS NULL OR	TaxAmt IS NULL OR	
 	  Freight IS NULL OR	TotalDue IS NULL;
+
+```
