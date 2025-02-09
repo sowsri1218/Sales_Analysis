@@ -16,6 +16,7 @@ This project is aims to explore, clean, and analyze sales data by using SQL. IT 
 
 **5.Data Visualization:** Using Tableau to create interactive and informative visualizations that effectively communicate the insights.
 
+
 **Project Structure**
 
 **1. Database Setup**
@@ -58,15 +59,7 @@ CREATE TABLE Sales_Data (
 );
 
 ```
-**2. Data Exploration & Cleaning**
-
-**View All Column Names and Data** : To see all the column names and data in the dataset
-
-**Record Count**: Determine the total number of records in the dataset.
-
-**Orders Count:** Find out how many unique orders are in the dataset.
-
-**ProductCategory Count:** Identify all unique product categories in the dataset.
+**2. Data Cleaning**
 
 **Null Value Check:** Check for any null values in the dataset and if present delete records with missing data.
 
@@ -99,5 +92,92 @@ WHERE
     product IS NULL OR ProductSubCategory IS NULL OR ProductCategory IS NULL OR	
     OrderQty IS NULL OR UnitPrice IS NULL OR LineTotal IS NULL OR TaxAmt IS NULL OR	
     Freight IS NULL OR	TotalDue IS NULL;
+
+```
+
+**3. Exploratory Data Analysis (EDA):**
+
+
+**View All Column Names and Data** : To see all the column names and data in the dataset
+
+**Record Count**: Determine the total number of records in the dataset.
+
+**Orders Count:** Find out how many unique orders are in the dataset.
+
+**ProductCategory Count:** Identify all unique product categories in the dataset.
+
+**ProductsubCategory Count:** Identify all unique product categories in the dataset.
+
+**ProductCount:** Identify all unique products in the dataset.
+
+
+
+```sql
+
+SELECT * FROM sales_data;
+SELECT COUNT(*) FROM sales_data;
+SELECT COUNT(DISTINCT orderid) FROM sales_data;
+SELECT DISTINCT productcategory FROM sales_data;
+SELECT DISTINCT productsubcategory FROM sales_data;
+SELECT DISTINCT product FROM sales_data;
+
+```
+
+**4. SQL Queries:**
+
+```sql
+
+-----Total sales Per year
+
+SELECT extract(year from OrderDate) AS year,
+count(orderqty) AS Totalsales
+FROM sales_data
+GROUP BY year
+ORDER BY year;
+
+
+-----Total Sales Per Month
+
+SELECT  TO_CHAR(OrderDate, 'Month') AS Month,
+sum(orderqty) AS TotalSales
+FROM sales_data 
+GROUP BY Month
+ORDER BY totalsales desc;
+
+--Total Revenue per month
+
+SELECT  TO_CHAR(OrderDate, 'Month') AS Month,
+SUM(totaldue) AS Revenue
+FROM sales_data 
+GROUP BY Month
+ORDER BY revenue desc;
+
+-- Total sales by weekday and weekend
+
+SELECT 
+    CASE WHEN EXTRACT(DOW FROM OrderDate) IN (1, 2, 3, 4, 5) THEN 'Weekday'
+    ELSE 'Weekend' END AS DayType,
+SUM(orderqty) AS TotalSales
+FROM sales_data
+GROUP BY DayType
+ORDER BY totalsales desc;
+
+-- Total sales for each month and best selling month in each year
+
+select 
+	year,
+	month,
+	totalsales 
+from (
+select 
+		extract(year from orderdate)as year, 
+		TO_CHAR(orderdate, 'month')as month,
+		SUM(orderqty) AS TotalSales,
+		rank() over (partition by extract(year from orderdate)
+		order by SUM(orderqty) desc)as rank 
+from sales_data 
+group by year,month 
+) 
+as t1 where rank = 1;
 
 ```
