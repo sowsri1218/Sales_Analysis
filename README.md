@@ -349,17 +349,19 @@ GROUP BY
 ```
 **Identify repeat purchases**
 ```sql
-SELECT 
-    customerid, 
-    COUNT(orderid) as purchase_count 
-FROM 
-    sales_data 
-GROUP BY 
-    customerid 
-HAVING 
-    COUNT(orderid) > 1
-ORDER BY 
-    purchase_count DESC;
+SELECT CustomerID
+FROM (SELECT CustomerID, COUNT(OrderID) AS PurchaseCount
+      FROM Sales_Data
+      GROUP BY CustomerID)
+WHERE PurchaseCount > 1;
+```
+**Identify single purchasers**
+```sql
+SELECT CustomerID
+FROM (SELECT CustomerID, COUNT(OrderID) AS PurchaseCount
+      FROM Sales_Data
+      GROUP BY CustomerID)
+WHERE PurchaseCount = 1;
 ```
 **High-frequency, high-value customers**
 ```sql
