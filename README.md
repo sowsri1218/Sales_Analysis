@@ -413,3 +413,75 @@ WHERE
 **Revenue Insights:** The analysis identifies the top-spending customers, the most popular products, and the highest-revenue salespersons.
 
 **Freight Charges Insights:** This section shows the average freight charges for each product category.
+
+**Reports**
+
+**Yearly Sales Performance:**
+
+Sales peaked in 2013, contributing to 54.04% of the total sales over the years. This indicates that 2013 was a particularly successful year for sales.
+
+**Monthly Revenue Trend:**
+
+March had the highest monthly revenue at 14.49%, while April had the lowest at 1.83%. This suggests a potential seasonal impact on sales, with March being a strong month for revenue.
+
+**Sales by Geographical Location:**
+
+Canada was the leading region, accounting for 38.28% of total sales. This highlights the importance of the Canadian market for the business.
+
+**Product Flow Analysis:**
+
+The highest number of products in the "shippied" category were clothing with 6582 and Bikes with 6139 units . This indicates strong demand for clothing and bike products.
+
+The majority of orders are in the "Approved" (6,371) and "In process" (6,049) categories, indicating a strong pipeline of orders.
+
+A significant number of orders are "Cancelled" (2,647) and "Rejected" (1,845), which may need further investigation to understand the reasons for these high numbers.
+
+"Shipped" orders are 5,691.
+
+**Sales Trend by Day of the Week:**
+
+Sales were significantly higher during weekdays (72.16%) compared to weekends (27.84%). This suggests that customers are more likely to make purchases on weekdays.
+
+**Weekly Revenue Trend:**
+
+Wednesday recorded the highest revenue at 22.31%, while Friday had the lowest at 5.39%. This could indicate mid-week promotional activities or other factors driving sales on Wednesdays.
+
+**Sales and Revenue by Category:**
+
+**Clothing:** While accounting for 32.49% of sales, Clothing only contributes 2.64% to revenue. This indicates a low revenue per sale for Clothing items.
+
+**Bikes:** Although they make up only 30.31% of sales, Bikes contribute a significant 79.72% to revenue. Bikes are the highest revenue-generating category.
+
+**Revenue by Product Sub-Category:**
+
+Mountain Bikes: Contribute the highest revenue at 36.30%.
+
+Road Bikes: Follow closely with 30.03% of revenue.
+
+Touring Bikes: Account for 21.65% of revenue.
+
+Mountain and Road Frames: Together, they make up a smaller portion of revenue at 12.01%.
+
+**Top 5 Products by Revenue:**
+
+Mountain-200 Black, 38: Contributes the highest revenue at 28.05%.
+
+Mountain-200 Black, 42: Follows with 20.92% revenue.
+
+Mountain-200 Silver, 38 and 42: Together, these products contribute 36.66% of revenue.
+
+Touring-1000 Blue, 60: Accounts for 14.37% of revenue.
+
+**Top 5 Customers by Revenue:**
+
+Customer 29580: Contributes the highest revenue at 34.81%.
+
+Customer 29722 and Customer 29639: Together, they contribute 50.99% of revenue.
+
+These top customers are significant revenue contributors and maintaining a good relationship with them could be beneficial.
+
+**Top 5 Salespersons by Revenue Contribution:**
+
+Salesperson 289, 282, 283 and 290: Major Contributors for revenue
+
+
