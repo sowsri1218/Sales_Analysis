@@ -105,6 +105,8 @@ WHERE
 
 **Record Count**: Determine the total number of records in the dataset.
 
+**Customers Count:** Find out how many total ocustomers are in the dataset.
+
 **Orders Count:** Find out how many unique orders are in the dataset.
 
 **ProductCategory Count:** Identify all unique product categories in the dataset.
@@ -119,6 +121,7 @@ WHERE
 
 SELECT * FROM sales_data;
 SELECT COUNT(*) FROM sales_data;
+SELECT COUNT(DISTINCT customerid) as total_customers FROM sales_data;
 SELECT COUNT(DISTINCT orderid) FROM sales_data;
 SELECT DISTINCT productcategory FROM sales_data;
 SELECT DISTINCT productsubcategory FROM sales_data;
