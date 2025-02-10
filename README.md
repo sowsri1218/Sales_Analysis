@@ -486,7 +486,7 @@ These top customers are significant revenue contributors and maintaining a good 
 
 Salesperson 289, 282, 283 and 290: Major Contributors for revenue
 
-**Find the interactive dahsboards here**
+**Find the interactive Tableau dahsboards here**
 
 https://public.tableau.com/app/profile/soujanya.tumma/viz/Sales_Analysis_17392234878200/Dashboard1
 
