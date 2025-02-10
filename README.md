@@ -400,6 +400,8 @@ WHERE
     purchase_count <= 10 AND total_spent <= 1000;
 ```
 
+**5.Data Visualization:** Used tableau for data visualization
+
 **Findings:**
 
 **Customer Demographics:** The dataset includes customers from different demographics, with sales distributed across various product categories such as Bikes, Components, Clothing, and Accessories.
@@ -484,4 +486,8 @@ These top customers are significant revenue contributors and maintaining a good 
 
 Salesperson 289, 282, 283 and 290: Major Contributors for revenue
 
+**Find the interactive dahsboards here**
 
+https://public.tableau.com/app/profile/soujanya.tumma/viz/Sales_Analysis_17392234878200/Dashboard1
+
+https://public.tableau.com/app/profile/soujanya.tumma/viz/Sales_Analysis_2_17392235361990/Dashboard2
