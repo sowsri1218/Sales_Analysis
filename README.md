@@ -22,7 +22,7 @@ This project is aims to explore, clean, and analyze sales data by using SQL. IT 
 
 **1. Database Setup**
 
-**Database Creation**: The project starts by creating a database named sales_project_analysis.
+**Database Creation**: The project starts by creating a database named sales_analysis_project.
 
 **Table Creation:** A table named Sales_data is created to store the sales data. The table structure includes columns for SalesPersonID,	TerritoryID,	Territory,	TerritoryGroup,	ShipMethodID,	ShipMethod,	ProductID,	Product,	ProductSubCategory,	ProductCategory,	OrderQty,	UnitPrice,	LineTotal,	TaxAmt,	Freight and	TotalDue.
 
@@ -60,6 +60,8 @@ CREATE TABLE Sales_Data (
 );
 
 ```
+Then Import the data from the CSV file into the Sales_Data Table.
+
 **2. Data Cleaning**
 
 **Null Value Check:** Check for any null values in the dataset and if present delete records with missing data.
