@@ -316,3 +316,16 @@ GROUP BY
 ORDER BY
    revenue DESC limit 5;
 ```
+**Findings:**
+
+**Customer Demographics:** The dataset includes customers from different demographics, with sales distributed across various product categories such as Bikes, Components, Clothing, and Accessories.
+
+**Sales Trends:** Both monthly and weekly analysis reveal variations in sales, helping to identify peak seasons and days.
+
+**Product Flow Analysis:** This analysis illustrates the status of total orders, showing how many products got approved, backordered, cancelled, are in-process, rejected, and shipped.
+
+**Product Insights:** Sales and revenue are analyzed by product category and sub-category, providing a detailed understanding of product performance.
+
+**Revenue Insights:** The analysis identifies the top-spending customers, the most popular products, and the highest-revenue salespersons.
+
+**Freight Charges Insights:** This section shows the average freight charges for each product category.
