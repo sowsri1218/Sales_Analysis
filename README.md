@@ -270,6 +270,21 @@ WHERE
 group by customerid, territory
 order by revenue desc limit 5;
 ```
+**Top 5 Customers by revenue**
+```sql
+SELECT 
+    customerid,
+    sum(totaldue) AS revenue
+FROM 
+    sales_data
+WHERE 
+    TRIM(LOWER(status)) = 'shipped'
+GROUP BY 
+    customerid
+ORDER BY 
+    revenue DESC
+LIMIT 5;
+```
 **Find the number of unique customers who purchased items from each category**
 ```sql
 select productcategory,
@@ -304,7 +319,7 @@ GROUP BY
 ORDER BY
    average_freight_charges desc ;
 ```
-**Top 5 Salespersons-Product Category Pairs by Total Sales and Revenue**
+**Top 5 Salespersons by Revenue**
 ```sql
 SELECT
     salespersonid,productcategory,
@@ -318,6 +333,68 @@ GROUP BY
 ORDER BY
    revenue DESC limit 5;
 ```
+**Total number of Customers and their purchase count**
+```sql
+SELECT 
+    customerid, 
+    COUNT(orderid) as purchase_count, 
+    SUM(totaldue) as total_spent 
+FROM 
+    sales_data 
+GROUP BY 
+    customerid;
+```
+**Identify repeat purchases**
+```sql
+SELECT 
+    customerid, 
+    COUNT(orderid) as purchase_count 
+FROM 
+    sales_data 
+GROUP BY 
+    customerid 
+HAVING 
+    COUNT(orderid) > 1
+ORDER BY 
+    purchase_count DESC;
+```
+**High-frequency, high-value customers**
+```sql
+SELECT 
+    customerid 
+FROM 
+    (
+        SELECT 
+            customerid, 
+            COUNT(orderid) as purchase_count, 
+            SUM(totaldue) as total_spent 
+        FROM 
+            sales_data 
+        GROUP BY 
+            customerid
+    )
+WHERE 
+    purchase_count > 10 AND total_spent > 1000;
+```
+**Low-frequency, low-value customers**
+```sql
+SELECT 
+    customerid 
+FROM 
+    (
+        SELECT 
+            customerid, 
+            COUNT(orderid) as purchase_count, 
+            SUM(totaldue) as total_spent 
+        FROM 
+            sales_data 
+        GROUP BY 
+            customerid
+    )
+WHERE 
+    purchase_count <= 10 AND total_spent <= 1000;
+```
+
 **Findings:**
 
 **Customer Demographics:** The dataset includes customers from different demographics, with sales distributed across various product categories such as Bikes, Components, Clothing, and Accessories.
