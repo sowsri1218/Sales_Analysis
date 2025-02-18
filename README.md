@@ -491,3 +491,21 @@ Salesperson 289, 282, 283 and 290: Major Contributors for revenue
 https://public.tableau.com/app/profile/soujanya.tumma/viz/Sales_Analysis_17392234878200/Dashboard1
 
 https://public.tableau.com/app/profile/soujanya.tumma/viz/Sales_Analysis_2_17392235361990/Dashboard2
+
+**Final Conclusion:**
+
+The dashboards provide a detailed overview of business performance, highlighting key opportunities for improvement in product category diversification, geographical reach, and customer growth. 
+
+A significant challenge identified is the reliance on the bike category, indicating the need for expansion into other product categories and regions. 
+
+Additionally, a significant number of orders are "Cancelled" (2,647) and "Rejected" (1,845), which may need further investigation to understand the reasons behind these high numbers, potentially indicating underlying issues in the order process or customer satisfaction.
+
+**Sales Improvement Recommendations:**
+
+**Promotions for Underperforming Categories:** Introduce special promotions and offers for accessories and components to increase their revenue contribution.
+
+**Geographical Targeting:** Invest in marketing campaigns in less saturated regions to expand the customer base and build loyalty.
+
+**Seasonal Promotions:** Maximize sales through discounts and limited-time offers during peak seasons.
+
+**Order Process and Customer Satisfaction Analysis:** Conduct a thorough investigation into the high number of cancelled and rejected orders. Review the order process, gather customer feedback, ensure accurate inventory management, address payment, security issues and strengthen customer support.
