@@ -343,27 +343,54 @@ SELECT
     COUNT(orderid) as purchase_count, 
     SUM(totaldue) as total_spent 
 FROM 
-    sales_data 
+    sales_data
+WHERE Status = 'Shipped'
 GROUP BY 
     customerid;
 ```
+-- Customer Growth Over the Years
+SELECT 
+   EXTRACT(YEAR FROM OrderDate) AS year,
+   COUNT(DISTINCT CustomerID) AS TotalDistinctCustomers
+FROM 
+    sales_data
+GROUP BY year
+ORDER BY year;
+-- Customer Reach Over the Years
+SELECT 
+   EXTRACT(YEAR FROM OrderDate) AS Year,
+   COUNT(DISTINCT CustomerID) AS TotalDistinctCustomers
+FROM 
+    Sales_Data
+WHERE 
+    TRIM(LOWER(Status)) = 'shipped'
+GROUP BY 
+    EXTRACT(YEAR FROM OrderDate)
+ORDER BY 
+    Year;
 **Identify repeat purchases**
 ```sql
-SELECT CustomerID
-FROM (SELECT CustomerID, COUNT(OrderID) AS PurchaseCount
-      FROM Sales_Data
-      GROUP BY CustomerID)
+SELECT CustomerID, Status
+FROM (
+    SELECT CustomerID, Status, COUNT(OrderID) AS PurchaseCount
+    FROM Sales_Data
+    WHERE Status = 'Shipped'
+    GROUP BY CustomerID, Status
+) AS RepeatPurchases
 WHERE PurchaseCount > 1;
 ```
 **Identify single purchasers**
 ```sql
-SELECT CustomerID
-FROM (SELECT CustomerID, COUNT(OrderID) AS PurchaseCount
-      FROM Sales_Data
-      GROUP BY CustomerID)
-WHERE PurchaseCount = 1;
+SELECT CustomerID, Status
+FROM (
+    SELECT CustomerID, Status, COUNT(OrderID) AS PurchaseCount
+    FROM Sales_Data
+    WHERE Status = 'Shipped'
+    GROUP BY CustomerID, Status
+) AS RepeatPurchases
+WHERE PurchaseCount <= 1;
 ```
-**High-frequency, high-value customers**
+**High-frequency Customers**
 ```sql
 SELECT 
     customerid 
@@ -375,13 +402,14 @@ FROM
             SUM(totaldue) as total_spent 
         FROM 
             sales_data 
+		WHERE Status = 'Shipped'
         GROUP BY 
             customerid
     )
 WHERE 
-    purchase_count > 10 AND total_spent > 1000;
+    purchase_count > 10;
 ```
-**Low-frequency, low-value customers**
+**Low-frequency Customers**
 ```sql
 SELECT 
     customerid 
@@ -392,12 +420,13 @@ FROM
             COUNT(orderid) as purchase_count, 
             SUM(totaldue) as total_spent 
         FROM 
-            sales_data 
+            sales_data
+		WHERE Status = 'Shipped'
         GROUP BY 
             customerid
     )
 WHERE 
-    purchase_count <= 10 AND total_spent <= 1000;
+    purchase_count <= 10;
 ```
 
 **5.Data Visualization:** Used tableau for data visualization
